@@ -25,7 +25,7 @@ describe "Static pages" do
     let(:page_title) { '' }
 
     it_should_behave_like "all static pages"
-    it { should_not have_selector 'title', text: '| Help' }
+    it { should have_selector 'title', text: '| Help' }
   end
 
   describe "About page" do
@@ -34,7 +34,7 @@ describe "Static pages" do
     let(:page_title) { '' }
 
     it_should_behave_like "all static pages"
-    it { should_not have_selector 'title', text: '| About Us' }
+    it { should have_selector 'title', text: '| About Us' }
   end
 
   describe "Contact page" do
@@ -43,7 +43,30 @@ describe "Static pages" do
     let(:page_title) { '' }
 
     it_should_behave_like "all static pages"
-    it { should_not have_selector 'title', text: '| Contact' }
+    it { should have_selector 'title', text: '| Contact' }
+  end
+
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "Sign up now!"
+    page.should have_selector 'title', text: full_title('Sign up')
+    visit root_path
+    click_link "Help"
+    page.should have_selector 'title', text: full_title('Help')
+    click_link "About"
+    page.should have_selector 'title', text: full_title('About Us')
+
+
+    click_link "Contact"
+    page.should have_selector 'title', text: full_title('Contact')
+
+    click_link "Home"
+    click_link "Sign up now!"
+    page.should have_selector 'title', text: full_title('Sign up')
+
+    click_link "Home"
+    click_link "sample app"
+    page.should_not have_selector 'title', text: ' | Home'
   end
 
 end
