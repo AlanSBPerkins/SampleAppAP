@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 gem 'bootstrap-sass', '2.0.4'
+gem 'bcrypt-ruby', '3.0.1'
+
 
 gem 'execjs'
 
@@ -16,6 +18,9 @@ group :development, :test do
   gem 'spork', '0.9.2'
 end
 
+group :development do
+  gem 'annotate', '2.5.0'
+end  
 
 # Gems used only for assets and not required
 # in production environments by default.
