@@ -18,7 +18,7 @@ describe "User Pages" do
 	end
 
 	describe "signup" do
-		before { visit  signup_path }
+		before { visit signup_path }
 
 		let(:submit) { "Create my account" }
 
@@ -36,12 +36,7 @@ describe "User Pages" do
 		end
 
 		describe "with valid information" do
-			before do
-				fill_in "Name", 				with: "Example User"
-				fill_in "Email", 				with: "user@example.com"
-				fill_in "Password",			with: "foobar"
-				fill_in "Confirmation",	with: "foobar"
-			end
+			before { valid_signup }
 
 			describe "after saving the user" do
 				before { click_button submit }
