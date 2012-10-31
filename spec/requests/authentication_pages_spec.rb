@@ -18,7 +18,6 @@ describe "Authentication" do
 			before { click_button "Sign in" }
 
 			it { should have_selector('title', text: 'Sign in') }
-			it { should have_selector('div.alert.alert-error', text: 'Invalid') }
 			it { should have_error_message('Invalid') }
 
 			describe "after visiting another page" do 
