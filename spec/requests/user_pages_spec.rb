@@ -7,7 +7,7 @@ describe "User Pages" do
 		let(:user) { FactoryGirl.create(:user) }
 
 		before(:each) do
-			valid_signin user
+			sign_in user
 			visit users_path
 		end
 
@@ -34,7 +34,7 @@ describe "User Pages" do
 			describe "as an admin user" do
 				let(:admin) { FactoryGirl.create(:admin) } 
 				before do
-					valid_signin admin
+					sign_in admin
 					visit users_path
 				end
 
@@ -101,7 +101,7 @@ describe "User Pages" do
 	describe "edit" do
 		let(:user) { FactoryGirl.create(:user) }
 		before do
-			valid_signin user
+			sign_in user
 			visit edit_user_path(user) 
 		end	
 
@@ -124,7 +124,7 @@ describe "User Pages" do
 	    		fill_in "Name",				with: new_name
 	    		fill_in "Email",			with: new_email
 	    		fill_in "Password",			with: user.password
-	    		fill_in "Confirm Password",	with: user.password
+	    		fill_in "Confirmation",		with: user.password
 	    		click_button "Save changes"
 	    	end
 
